@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- displays site properly based on user's device -->
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- displays site properly based on user's device -->
 
-    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,700;1,400;1,800&family=Work+Sans:ital,wght@0,700;1,300&display=swap" rel="stylesheet">
+        <link rel="icon" type="image/png" sizes="32x32"
+            href="./assets/images/favicon-32x32.png">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,700;1,400;1,800&family=Work+Sans:ital,wght@0,700;1,300&display=swap"
+            rel="stylesheet">
 
-    <title>Frontend Mentor | Age calculator app</title>
-
-    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-    <style>
+        <title>Frontend Mentor | Age calculator app</title>
+        <style>
         .attribution {
             font-size: 11px;
             text-align: center;
@@ -54,12 +55,6 @@
             padding: 5px;
         }
         
-        .outputs {
-            color: hsl(0, 0%, 8%);
-            margin-left: 40px;
-            font-size: 65px;
-        }
-        
         .lable {
             display: block;
             margin-bottom: 15px;
@@ -85,14 +80,39 @@
             font-size: larger;
             font-weight: bold;
         }
-        /* .place::-webkit-inner-spin-button,
-        .place::-webkit-outer-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
-        } */
+        
+        .outputs {
+            display: flex;
+            flex-direction: row;
+            color: hsl(0, 0%, 8%);
+            margin-left: 40px;
+            font-size: 65px;
+        }
         
         .dash {
+            display: flex;
+            flex-direction: column;
+            width: 10px;
             color: blueviolet;
+        }
+        
+        .slide {
+            color: aqua;
+            transition-property: transform 1s;
+            animation-name: dashAnime;
+            animation-duration: 2s;
+            animation-delay: 1s;
+            animation-fill-mode: both;
+            animation-iteration-count: 3;
+        }
+        
+        @keyframes dashAnime {
+            from {
+                transform: translateY(200px);
+            }
+            to {
+                transform: translateY(0);
+            }
         }
         
         .submit {
@@ -118,109 +138,159 @@
             color: red;
             font-size: 4px;
         }
+        
+        @keyframes numberchange {
+            0% {
+                transform: scale(1);
+                transform: translateY(0px);
+                opacity: 10%;
+            }
+            50% {
+                transform: scale(1.5);
+                transform: translateY(10px);
+                opacity: 50%;
+            }
+            100% {
+                transform: scale(1);
+                transform: translateY(20px);
+                opacity: 100%;
+            }
+        }
+        
+        .change {
+            animation: numberchange 0.5s;
+        }
+        
+        .place {
+            color: black;
+            border-color: rgb(190, 190, 190);
+        }
+        
+        .error {
+            background-color: #FFCCCC;
+            color: rgb(195, 53, 53);
+            border-color: rgb(246, 59, 59);
+            font-size: 15px;
+        }
     </style>
-</head>
+    </head>
 
-<body>
-    <div class="main">
+    <body>
+        <div class="main">
 
-        <div class="inputs">
-            <label class="lable" for="day">Day</label><br>
-            <input class="place" type="number" id="day" min="1" max="31" required placeholder="DD" oninput="validateInput(this)">
+            <div class="inputs">
+                <label class="lable" for="day">Day</label><br>
+                <input class="place" type="number" id="day" min="1" max="31"
+                    required placeholder="DD" oninput="validateInput(this)">
 
-            <span id="errorText" class="erorr"></span>
+                <span id="errorText" class="erorr"></span>
 
-            <label class="lable" for="month">Month</label>
-            <input class="place" type="number" id="month" min="1" max="12" required placeholder="MM" oninput="validateInput(this)">
+                <label class="lable" for="month">Month</label>
+                <input class="place" type="number" id="month" min="1" max="12"
+                    required placeholder="MM" oninput="validateInput(this)">
 
-            <label class="lable" for="year">Year</label>
-            <input class="place" type="number" id="year" name="year" required placeholder=" YYYY" oninput="validateInput(this)">
-            <br>
-            <!-- <hr class="horizontal-line"> -->
-            <button class="submit" type="submit" onclick="calculate()">
-            <img src="/HTML/front end mentor/age-calculator-app-main/assets/images/icon-arrow.svg"></button>
+                <label class="lable" for="year">Year</label>
+                <input class="place" type="number" id="year" name="year"
+                    required placeholder=" YYYY" oninput="validateInput(this)">
+                <br>
+                <!-- <hr class="horizontal-line"> -->
+                <button class="submit" type="submit" onclick="calculate()">
+                    <img
+                        src="./assets/images/icon-arrow.svg"
+                        alt="arrow-icon"></button>
+
+            </div>
+            <div class="outputs">
+                <span class="dash " id="ydash">--</span> <span class="textY">years
+                </span><span class="dash" id="mdash">--</span> months<br> <span
+                    class="dash" id="ddash">--</span> days
+            </div>
 
         </div>
-        <div class="outputs">
-            <span class="dash" id="ydash">--</span> years<br> <span class="dash" id="mdash">--</span> months<br> <span class="dash" id="ddash">--</span> days
+        <div class="attribution" style="position: absolute; bottom: 0;">
+            Challenge by <a href="https://www.frontendmentor.io?ref=challenge"
+                target="_blank">Frontend Mentor</a>. Coded by <a href="#">Yabets
+                Workaferahu</a>.
         </div>
 
-    </div>
-    <!-- <div class="attribution">
-        Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. Coded by <a href="#">Your Name Here</a>.
-    </div> -->
-
-</body>
-<script>
+    </body>
+    <script type="text/javascript">
     function calculate() {
         //----------------current date --------------------
         var currentDate = new Date();
 
         // Get the current year, month, and day
         var cyear = currentDate.getFullYear();
-        var cmonth = currentDate.getMonth() + 1; // Note: Months are zero-indexed, so add 1
+        var cmonth = currentDate.getMonth(); // Note: Months are zero-indexed, so add 1
         var cday = currentDate.getDate();
 
         // input date year and month-----------------------
         var day = document.getElementById('day').value;
         var month = document.getElementById('month').value;
         var year = document.getElementById('year').value;
+        var place = document.getElementsByClassName('place');
         var yearo = cyear - parseInt(year);
-        var montho = cmonth - parseInt(month);
-        var dayo = cday - parseInt(day);
+        var monthe = document.getElementById('month');
+        var yeare = document.getElementById('year');
+        var daye = document.getElementById('day');
+        var resultYear = document.getElementById('ydash');
+        var resultMonth = document.getElementById('mdash');
+        var resultDay = document.getElementById('ddash');
 
 
-        iif(isNaN(value)) {
-                ageInput.classList.add("error");
-                errorText.textContent = "Please enter a valid number.";
-            } else {
-                var r = parseInt(day) + parseInt(year);
-                var resultYear = document.getElementById('ydash');
-                resultYear.innerHTML = yearo + '';
-                var resultMonth = document.getElementById('mdash');
-                resultMonth.innerHTML = montho + '';
-                var resultDay = document.getElementById('ddash');
-                resultDay.innerHTML = dayo + '';
 
-            }
-            // document.querySelector('form').addEventListener('submit', function(event) {
-            //     event.preventDefault(); // Prevent form submission
 
-        //     var input = document.getElementById('day').value;
-        //     var errorText = document.getElementById('errorText');
 
-        //     // Validate the input (add your own validation logic)
-        //     if (input === NULL) {
-        //         errorText.textContent = 'Please enter a valid input.';
-        //     } else {
-        //         // Clear the error text if the input is valid
-        //         errorText.textContent = '';
-        //         calculate();
 
-        //         // Proceed with submitting the form or performing further actions
-        //         // ...
-        //     }
-        // });
 
-        // var ageInYears = currentDate.getFullYear() - birthDate.getFullYear();
-        // var ageInMonths = currentDate.getMonth() - birthDate.getMonth();
-        // var ageInDays = currentDate.getDate() - birthDate.getDate();
-        // if (ageInDays < 0) {
-        //     ageInMonths--;
-        //     var daysInCurrentMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 0).getDate();
-        //     ageInDays += daysInCurrentMonth;
-        // }
+        if (month === cmonth) {
+            var montho = 0;
+        } else if (month < cmonth) {
+            var montho = cmonth - parseInt(month);
+        } else if (month > cmonth) {
+            var montho = 12 - (parseInt(month) - cmonth);
+        }
+        if (day === cday) {
+            var dayo = cday;
+        } else if (day < cday) {
+            var dayo = cday - parseInt(day);
+        } else if (day > cday) {
+            var dayo = parseInt(day) - cday;
+        }
+        // var dayo = cday - parseInt(day);
+        var r = parseInt(day) + parseInt(year);
+        const input = document.getElementsByClassName('place');
 
-        // if (ageInMonths < 0) {
-        //     ageInYears--;
-        //     ageInMonths += 12;
-        // }
-        // var result = year0;
-        // var resultText = 'Age: ' + ageInYears + ' years, ' + ageInMonths + ' months, ' + ageInDays + ' days';
-        // var resultElement = document.getElementById('result');
-        // resultElement.innerHTML = result + '';
-        // // resultTextElement.textContent = resultText;
+        if (12 < month > 0 || month.trim() === '') {
+            monthe.classList.add('error');
+
+        } else if (31 < day > 0 || day.trim() === '') {
+            daye.classList.add('error');
+        } else if (year > cyear || year.trim() === '') {
+            yeare.classList.add('error');
+        } else {
+            monthe.classList.remove('error');
+            yeare.classList.remove('error');
+            daye.classList.remove('error');
+
+            var resultYear = document.getElementById('ydash');
+            resultYear.innerHTML = yearo + '';
+            resultYear.classList.add('change');
+            var resultMonth = document.getElementById('mdash');
+            resultMonth.innerHTML = montho + '';
+            resultMonth.classList.add('change');
+            var resultDay = document.getElementById('ddash');
+            resultDay.innerHTML = dayo + '';
+            resultDay.classList.add('change');
+        }
+
+
+
     }
+
+    resultYear.classList.remove('change');
+    resultMonth.classList.remove('change');
+    resultDay.classList.remove('change');
 </script>
 
 </html>
