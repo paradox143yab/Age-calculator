@@ -77,12 +77,20 @@ body {
     font-weight: bold;
 }
 
+
 .outputs {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     color: hsl(0, 0%, 8%);
     margin-left: 40px;
     font-size: 65px;
+}
+.months , .days ,.years {
+    display: flex;
+    flex-direction: row;
+}
+.textY ,.textD ,.textM{
+    margin-left: 100px;
 }
 
 .dash {
@@ -187,10 +195,16 @@ span {
                         alt="arrow-icon"></button>
 
             </div>
-            <div class="outputs">
-                <span class="dash " id="ydash">--</span> <span class="textY">years
-                </span><span class="dash" id="mdash">--</span> months<br> <span
-                    class="dash" id="ddash">--</span> days
+         <div class="outputs">
+                <div class="years">
+                    <span class="dash " id="ydash">--</span> <span class="textY">years
+                    </span>
+                </div>
+                <div class="months"><span class="dash" id="mdash">--</span> <span class="textM">months</span></div>
+                 <div class="days">
+                    <span
+                    class="dash" id="ddash">--</span> <span class="textD">days</span>
+                 </div>
             </div>
 
         </div>
