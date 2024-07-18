@@ -17,161 +17,148 @@
         <title>Frontend Mentor | Age calculator app</title>
         <style>
         .attribution {
-            font-size: 11px;
-            text-align: center;
-        }
-        
-        .attribution a {
-            color: hsl(228, 45%, 44%);
-        }
-        
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: hsl(0, 0%, 94%);
-            /* height: 100vh; */
-        }
-        
-        .main {
-            display: flex;
-            flex-direction: column;
-            font-family: 'Poppins', sans-serif;
-            margin-left: auto;
-            margin-right: auto;
-            display: block;
-            height: 500px;
-            width: 500px;
-            border: 4px;
-            border-radius: 15px;
-            border-bottom-right-radius: 150px;
-            /* border-color: black; */
-            background-color: white;
-        }
-        
-        .inputs {
-            margin: 40px;
-            display: flex;
-            padding: 5px;
-        }
-        
-        .lable {
-            display: block;
-            margin-bottom: 15px;
-            font-family: 'Poppins', sans-serif;
-            /* font-weight: 400i; */
-            color: hsl(0, 1%, 44%);
-            /* text-align: center; */
-        }
-        
-        .place {
-            margin-left: -30px;
-            margin-top: 25px;
-            width: 100px;
-            height: 40px;
-            border-radius: 5px;
-            border: 2px solid grey;
-            /* border-color: hsl(0, 0%, 34%); */
-            color: hsl(0, 0%, 34%);
-        }
-        
-        .place::placeholder {
-            font-family: 'Poppins', sans-serif;
-            font-size: larger;
-            font-weight: bold;
-        }
-        
-        .outputs {
-            display: flex;
-            flex-direction: row;
-            color: hsl(0, 0%, 8%);
-            margin-left: 40px;
-            font-size: 65px;
-        }
-        
-        .dash {
-            display: flex;
-            flex-direction: column;
-            width: 10px;
-            color: blueviolet;
-        }
-        
-        .slide {
-            color: aqua;
-            transition-property: transform 1s;
-            animation-name: dashAnime;
-            animation-duration: 2s;
-            animation-delay: 1s;
-            animation-fill-mode: both;
-            animation-iteration-count: 3;
-        }
-        
-        @keyframes dashAnime {
-            from {
-                transform: translateY(200px);
-            }
-            to {
-                transform: translateY(0);
-            }
-        }
-        
-        .submit {
-            margin-top: 40px;
-            margin-left: 20px;
-            border-radius: 50%;
-            height: 55px;
-            width: 55px;
-            border: none;
-            background-color: blueviolet;
-            cursor: pointer;
-        }
-        
-        .inputs hr {
-            position: relative;
-        }
-        
-        span {
-            text-align: left;
-        }
-        
-        .error {
-            color: red;
-            font-size: 4px;
-        }
-        
-        @keyframes numberchange {
-            0% {
-                transform: scale(1);
-                transform: translateY(0px);
-                opacity: 10%;
-            }
-            50% {
-                transform: scale(1.5);
-                transform: translateY(10px);
-                opacity: 50%;
-            }
-            100% {
-                transform: scale(1);
-                transform: translateY(20px);
-                opacity: 100%;
-            }
-        }
-        
-        .change {
-            animation: numberchange 0.5s;
-        }
-        
-        .place {
-            color: black;
-            border-color: rgb(190, 190, 190);
-        }
-        
-        .error {
-            background-color: #FFCCCC;
-            color: rgb(195, 53, 53);
-            border-color: rgb(246, 59, 59);
-            font-size: 15px;
-        }
+    font-size: 11px;
+    text-align: center;
+}
+
+.attribution a {
+    color: hsl(228, 45%, 44%);
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: hsl(0, 0%, 94%);
+    /* height: 100vh; */
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Poppins', sans-serif;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    height: 500px;
+    width: 500px;
+    border: 4px;
+    border-radius: 15px;
+    border-bottom-right-radius: 150px;
+    /* border-color: black; */
+    background-color: white;
+}
+
+.inputs {
+    margin: 40px;
+    display: flex;
+    padding: 5px;
+}
+
+.label {
+    display: block;
+    margin-bottom: 15px;
+    font-family: 'Poppins', sans-serif;
+    /* font-weight: 400i; */
+    color: hsl(0, 1%, 44%);
+    /* text-align: center; */
+}
+
+.place {
+    margin-left: -30px;
+    margin-top: 25px;
+    width: 100px;
+    height: 40px;
+    border-radius: 5px;
+    border: 2px solid rgb(190, 190, 190);
+    color: hsl(0, 0%, 34%);
+    font-family: 'Poppins', sans-serif;
+    font-size: larger;
+    font-weight: bold;
+}
+
+.outputs {
+    display: flex;
+    flex-direction: row;
+    color: hsl(0, 0%, 8%);
+    margin-left: 40px;
+    font-size: 65px;
+}
+
+.dash {
+    display: flex;
+    flex-direction: column;
+    width: 10px;
+    color: blueviolet;
+}
+
+.slide {
+    color: aqua;
+    transition-property: transform 1s;
+    animation-name: dashAnime;
+    animation-duration: 2s;
+    animation-delay: 1s;
+    animation-fill-mode: both;
+    animation-iteration-count: 3;
+}
+
+@keyframes dashAnime {
+    from {
+        transform: translateY(200px);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+.submit {
+    margin-top: 40px;
+    margin-left: 20px;
+    border-radius: 50%;
+    height: 55px;
+    width: 55px;
+    border: none;
+    background-color: blueviolet;
+    cursor: pointer;
+}
+
+.inputs hr {
+    position: relative;
+}
+
+span {
+    text-align: left;
+}
+
+.error {
+    color: rgb(195, 53, 53);
+    font-size: 15px;
+    background-color: #FFCCCC;
+    border: 2px solid rgb(246, 59, 59);
+    padding: 5px;
+}
+
+@keyframes numberchange {
+    0% {
+        transform: scale(1);
+        transform: translateY(0px);
+        opacity: 10%;
+    }
+    50% {
+        transform: scale(1.5);
+        transform: translateY(10px);
+        opacity: 50%;
+    }
+    100% {
+        transform: scale(1);
+        transform: translateY(20px);
+        opacity: 100%;
+    }
+}
+
+.change {
+    animation: numberchange 0.5s;
+}
     </style>
     </head>
 
